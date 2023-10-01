@@ -65,6 +65,19 @@
 - [바킹독 실전 알고리즘 강의](https://github.com/encrypted-def/basic-algo-lecture)
 - [이것이 취업을 위한 코딩 테스트다 with 파이썬](https://www.youtube.com/playlist?list=PLVsNizTWUw7H9_of5YCB0FmsSc-K44y81)
 
+## 커밋 메시지 컨벤션 
+
+- [ADD] : 문제 풀이 파일이나 부수적인 코드 추가
+- [MOD] : 코드 및 내부 파일 수정
+- [DEL] : 불필요한 코드나 파일 삭제
+- [FIX] : 문제 오류, 버그 수정 
+- [CHORE] : 함수 및 변수 이름 변경, 사소한 문법 오류 해결 등의 작은 작업
+- [DOCS] : README, Wiki 등의 문서 작업 
+- [MOVE] : 프로젝트 파일 및 코드 이동
+- [RENAME] : 파일 이름 변경
+- [MERGE] : 다른 브랜치와의 충돌 해결 후 Merge
+- [REFACTOR] : 코드 리팩토링 작업
+
 ## 참고 레포
 
 - https://github.com/b1urrrr/Algorithm-Study
