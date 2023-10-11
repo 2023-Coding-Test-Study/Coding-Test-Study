@@ -23,10 +23,11 @@ int main(void) {
 	
 	stack<pair<int, int>> st;
 
-	// 오른쪽에서부터 시작 
+	// 오른쪽에서 왼쪽으로 이동 
 	for(int i = N - 1; i >= 0; i--){
-		// 현재 탑보다 높이가 작은 탑이 모두 나올 때까지 pop (스택이 빌 때까지)
-		while(!st.empty() && st.top().second < height[i]){
+    	// 스택에 넣으려는 값(왼쪽)과 기존에 스택의 top에 있는 값(오른쪽) 비교 
+		while(!st.empty() && st.top().second < height[i]){ 
+        	// 새로운 값(왼쪽)이 더 크면 해당 탑의 번호 저장 
 			answer[st.top().first] = i + 1; 
 			st.pop(); 
 		}
