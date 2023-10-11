@@ -12,19 +12,20 @@ int main(void) {
 	int n; 
 	cin >> n; 
 
+	// O(NlogN): N은 최대 10만 
 	for(int i = 0; i < n; i++){
 		int x; 
 		cin >> x; 
 
 		if(x == 0){
 			if(!pq.empty()){
-				cout << pq.top() << "\n"; 
-				pq.pop();
+				cout << pq.top() << "\n"; // O(1)
+				pq.pop(); // O(logN)
 			}else{
 				cout << "0\n"; 
 			}
 		}else{
-			pq.push(x);
+			pq.push(x); // O(logN)
 		}
 	}
 	
