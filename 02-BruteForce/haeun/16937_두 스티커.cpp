@@ -10,9 +10,9 @@ typedef pair<int, int> pii;
 
 const int MAX = 101; 
 int H, W, N;
-vector<pair<pii, int>> sticker; 
+vector<pair<pii, int>> sticker; // 회전한 모양까지 포함하여 저장 
 bool selected[MAX]; // 백트래킹에 사용 
-int arr[2]; // 선택된 2개의 스티커 정보 저장 
+int arr[2]; // 선택된 2개의 스티커 인덱스 저장 
 int answer = 0; 
 
 void checkTwoStickerSize() {
@@ -40,7 +40,7 @@ void dfs(int idx, int cnt){
 		return; 
 	}
 
-	// 조합이므로 i는 idx부터 시작함. (한번 선택한 원소는 돌아보지 않음.)
+	// 조합이므로 i는 idx부터 시작함. (한번 선택한 원소는 돌아보지 않음.) 
 	for(int i = idx; i < sticker.size(); i++){
 		int height = sticker[i].first.first; 
 		int width = sticker[i].first.second; 
@@ -54,7 +54,7 @@ void dfs(int idx, int cnt){
 			arr[cnt] = i; 
 
 			// 재귀 호출 
-			dfs(idx + 1, cnt + 1); 
+			dfs(i + 1, cnt + 1); 
 
 			// 상태 복구
 			selected[num] = false; 
