@@ -54,7 +54,7 @@ void dfs(int idx, int cnt){
 			arr[cnt] = i; 
 
 			// 재귀 호출 
-			dfs(i + 1, cnt + 1); 
+			dfs(i + 1, cnt + 1);
 
 			// 상태 복구
 			selected[num] = false; 
