@@ -14,12 +14,14 @@ int main(void) {
 	int N, M;
 	cin >> N >> M;
 
-	int arr[9][9];
+	int arr[10][10];
 	int ans = -1;
+	string temp = "";
 
 	for (int i = 0; i < N; i++) {
+		cin >> temp;
 		for (int j = 0; j < M; j++) {
-			cin >> arr[i][j];
+			arr[i][j] = (int)temp[j] - 48; // 48 == "0"
 		}
 	}
 	// 값 대입
@@ -36,14 +38,14 @@ int main(void) {
 					while (a >= 0 && a < N && b >= 0 && b < M) {
 						num *= 10; // 10진수 올리기 
 						num += arr[a][b]; // 칸 수 늘린거라 생각하면 된다.
-						if (isSqure(num)) ans = max(ans, num);
 						a += x;
 						b += y;
+						if (isSqure(num)) ans = max(ans, num);
 					}
 				}
 			}
 		}
 	}
-	cout << ans;
+	cout << ans << "\n";
 
 }
