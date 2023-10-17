@@ -40,6 +40,7 @@ void dfs(int idx, int cnt){
 		return; 
 	}
 
+	// 조합이므로 i는 idx부터 시작함. (한번 선택한 원소는 돌아보지 않음.)
 	for(int i = idx; i < sticker.size(); i++){
 		int height = sticker[i].first.first; 
 		int width = sticker[i].first.second; 
