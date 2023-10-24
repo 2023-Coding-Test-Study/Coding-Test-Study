@@ -27,7 +27,7 @@ bool check(int x, int y, int value) { // 해당 value가 들어가도 되는지 
 
 void dfs(int cur) {
 	if (isEnd == true) return;
-	if (cur == L) { // 81번째인 경우 
+	if (cur == L) { // 빈칸을 모두 확인
 		for (int i = 0; i < 9; i++) { // 출력 
 			for (int j = 0; j < 9; j++) {
 				cout << N[i][j] << ' ';
