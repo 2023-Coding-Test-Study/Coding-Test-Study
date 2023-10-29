@@ -5,7 +5,7 @@ using namespace std;
 const int MAX = 64;
 int arr[MAX][MAX];
 
-void divide(int n, int r, int c){	
+void divideAndConquer(int n, int r, int c){	
 	// 현재 영역의 시작점 위치 저장 
 	int cur = arr[r][c];
 
@@ -16,11 +16,11 @@ void divide(int n, int r, int c){
 			// 각 영역의 시작점 좌표도 갱신한다. 
 			if(cur != arr[i][j]){
 				cout << "(";
-				divide(n / 2, r, c);
-				divide(n / 2, r, c + n / 2);
-				divide(n / 2, r + n / 2, c);
-				divide(n / 2, r + n / 2, c + n / 2);
-				cout << ")"; 
+				divideAndConquer(n / 2, r, c);
+				divideAndConquer(n / 2, r, c + n / 2);
+				divideAndConquer(n / 2, r + n / 2, c);
+				divideAndConquer(n / 2, r + n / 2, c + n / 2);
+				cout << ")";
 				return; 
 			}
 		}
@@ -48,7 +48,7 @@ int main()
 		}
 	}
 
-	divide(n, 0, 0); 
+	divideAndConquer(n, 0, 0); 
 
 	return 0;
 }
