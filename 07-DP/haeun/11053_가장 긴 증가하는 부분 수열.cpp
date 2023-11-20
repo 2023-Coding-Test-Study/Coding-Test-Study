@@ -5,7 +5,7 @@ using namespace std;
 const int MAX = 1001; 
 int arr[MAX]; 
 int dp[MAX]; 
-int maxLength = 0; 
+int ans = 0; 
 
 int main()
 {
@@ -32,10 +32,10 @@ int main()
 		}
 
 		dp[i] = tmp + 1; // 거기에 1을 더해서 dp 테이블 갱신 
-		maxLength = max(dp[i], maxLength); // dp 테이블의 최댓값 갱신 
+		ans = max(dp[i], ans); // dp 테이블의 최댓값 갱신 
 	}
 
-	cout << maxLength; 
+	cout << ans; 
 
 	return 0;
 }
