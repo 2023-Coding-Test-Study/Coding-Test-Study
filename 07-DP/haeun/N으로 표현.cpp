@@ -7,7 +7,7 @@ using namespace std;
 
 const int MAX = 8; 
 
-// N을 cnt번 연달아 사용해서 나오는 수 반환 
+// N을 cnt번 연속으로 이어붙인 수 반환  
 int calcCotinuousNumber(int N, int cnt) {
 	int num = 0; 
 
@@ -27,7 +27,7 @@ int solution(int N, int number) {
 	// 집합 배열 
 	vector<set<int>> s(MAX);
 
-	// N을 i번 연달아 사용하는 경우 
+	// N을 i번 연속으로 이어붙인 수 구하기 
 	int i = 1; 
 	for(auto& si: s){
 		si.insert(calcCotinuousNumber(N, i));
@@ -43,6 +43,8 @@ int solution(int N, int number) {
 					s[i].insert(a + b);
 					s[i].insert(a - b);
 					s[i].insert(a * b);
+                    
+                    // 0으로 나누는 경우 예외 처리!! 
 					if(b != 0) s[i].insert(a / b);
 				}
 			}
