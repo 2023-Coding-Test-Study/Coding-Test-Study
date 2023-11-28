@@ -142,7 +142,7 @@ void updateSafeAreaMaxSize() {
 
 // 빈칸에 3개의 벽을 놓아보면서 안전 영역 크기의 최댓값 갱신 
 void selectWallPosition(int idx, int cnt){
-	if(cnt == 3){
+	if(cnt == WALL_NUM){
 		copyMap();
 		buildWalls();
 
