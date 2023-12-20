@@ -23,7 +23,7 @@ void rot() {
     fill(sti[0], sti[9], 0);
     for (int i = 0; i < C; i++) {
         for (int j = 0; j < R; j++) {
-            sti[i][j] = tmp[R-1-j][i];
+            sti[i][j] = tmp[R-1-j][i]; // 수정한 부분 
             if (sti[i][j] == 1) sticker.push_back({ i, j });
         }
     }
@@ -44,40 +44,40 @@ int main(void) {
             }
         }
 
+
         int r = 0;
         while (r < 4) {
-            bool s = true;
             int sx = 0, sy = 0;
+            bool s = true;
             for(int l = 0; l < N; l++){
-                for (int k = 0; k < M; k++) {
-                    if (board[l][k] == 0) { // 해당 시작점에 대해서
-                        sx = l; sy = k;
-                        for (int i = 0; i < sticker.size(); i++) {
-                            int nx = sticker[i].X + l;
-                            int ny = sticker[i].Y + k;
+                for (int k = 0; k < M; k++) {   
+                     bool s = true; // 수정한 부분 
+                     sx = l; sy = k;
+                     for (int i = 0; i < sticker.size(); i++) {
+                         int nx = sticker[i].X + l;
+                         int ny = sticker[i].Y + k;
 
-                            if (nx < 0 || nx >= N || ny < 0 || ny >= M) {
-                                s = false;
-                                break;
-                            }
-                            if (board[nx][ny] != 0) {
-                                // 스티커를 놓을 수 없다면 
-                                s = false;
-                                break;
-                            }
-                        }
+                         if (nx < 0 || nx >= N || ny < 0 || ny >= M) {
+                             s = false;
+                             break;
+                         }
+                         if (board[nx][ny] == 1 && sti[sticker[i].X][sticker[i].Y] == 1) { // 수정한 부분 
+                             // 스티커를 놓을 수 없다면 
+                             s = false;
+                             break;
+                         }
+                     }
 
-                        if (s) {
-                            // 스티커를 놓을 수 있다면
-                            for (int i = 0; i < sticker.size(); i++) {
-                                int nx = sticker[i].X + sx;
-                                int ny = sticker[i].Y + sy;
+                     if (s) {
+                         // 스티커를 놓을 수 있다면
+                         for (int i = 0; i < sticker.size(); i++) {
+                             int nx = sticker[i].X + sx;
+                             int ny = sticker[i].Y + sy;
 
-                                board[nx][ny] = 1;
-                            }
-                            goto STOP; // 다른 스티커 가져옴 
-                        }
-                    }
+                             board[nx][ny] = 1;
+                         }
+                         goto STOP; // 다른 스티커 가져옴 
+                     }
                 }
             }
             sticker.clear(); // 초기화 
@@ -96,9 +96,7 @@ int main(void) {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
             if (board[i][j] == 1) ans++;
-            cout << board[i][j] << " ";
         }
-        cout << "\n";
     }
 
     cout << ans;
