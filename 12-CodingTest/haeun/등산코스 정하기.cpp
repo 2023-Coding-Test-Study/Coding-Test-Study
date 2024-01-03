@@ -83,8 +83,3 @@ vector<int> solution(int n, vector<vector<int>> paths, vector<int> gates, vector
 
 	return answer; 
 }
-
-int main() {
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);
-}
