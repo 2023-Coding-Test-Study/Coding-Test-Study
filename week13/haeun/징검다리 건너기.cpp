@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-// 징검다리를 건넌 사람이 x명일 때,
+// 징검다리를 '건너려고 하는' 사람이 x명일 때,
 // 한번에 건너뛸 수 있는 최대 칸수가 k 이하인가?
 // -> 연속으로 0이 된 디딤돌의 개수가 k보다 작은가? 
 bool decision(vector<int> stones, int x, int k) {
