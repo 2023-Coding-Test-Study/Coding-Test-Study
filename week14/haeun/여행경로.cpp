@@ -4,22 +4,29 @@
 #include <algorithm>
 #include <unordered_map>
 using namespace std;
-typedef pair<string, int> psi; // 공항 이름, 간선 번호
+typedef pair<string, int> psi;
 
 const int MAX = 10001;
+
+// 노드 간의 연결 관계 (인덱스가 문자열이므로 해시에 저장)
 unordered_map<string, vector<psi>> graph;
+
+// 간선 방문 여부 저장 (티켓 사용 여부)
 bool visited[MAX];
+int ticketSize = 0;
 
-vector<string> answer;
-int maxLength = 0; // 그래프 가지의 최대 깊이 (간선의 최대 개수)
-
-// 가능한 경우의 수 중에 첫번째 것만 저장하기 위한 플래그 변수 
+// 알파벳 순으로 첫번째 경우의 수만 저장하기 위한 플래그 변수 
 bool foundFirstCase = false; 
 
+vector<string> answer;
+
 void dfs(string now, int cnt, vector<string> cache) {
-    if(cnt == maxLength && !foundFirstCase) {
+    if(cnt == ticketSize && !foundFirstCase) {
         foundFirstCase = true;
+        
+        // 알파벳 순으로 가장 앞서는 경우만 정답으로 저장 
         answer = cache;
+        
         return;
     }
     
@@ -45,12 +52,14 @@ void dfs(string now, int cnt, vector<string> cache) {
 vector<string> solution(vector<vector<string>> tickets) {
     // 알파벳 순으로 오름차순 정렬
     sort(tickets.begin(), tickets.end());
-    maxLength = tickets.size();
     
-    // 노드 간의 연결 관계 -> 해시에 저장
+    ticketSize = tickets.size();
+    
     for(int i = 0; i < tickets.size(); i++){
         string s = tickets[i][0];
         string e = tickets[i][1];
+
+        // s에서 e로 가는 티켓 번호가 i라는 의미 
         graph[s].push_back({e, i});
     }
     
