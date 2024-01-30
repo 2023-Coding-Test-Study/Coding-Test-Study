@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -27,9 +26,7 @@ void input() {
 void solution() {
 	int answer = 0;
 	
-	while(!pq.empty()){
-		if(pq.size() == 1) break; 
-		
+	while(pq.size() > 1){
 		int first = pq.top();
 		pq.pop();
 		
