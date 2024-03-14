@@ -33,13 +33,14 @@ ll solution() {
 	ll sum = 0;
 
 	while(!q.empty()){
-		int qsize = q.size();
+    	// 아래 for문에서 pop 연산에 의해 크기가 줄어들기 때문에 초기값 저장 
+		int currentQ = q.size(); 
 
-		// 샘터의 좌우 좌표를 모두 큐에 넣는다.
-		for(int i = 0; i < qsize; i++){
+		for(int i = 0; i < currentQ; i++){
 			int x = q.front(); 
 			q.pop();
 			
+            // 샘터로부터 ± dist 좌표의 방문 여부 확인 
 			for(int j = 0; j < 2; j++){
 				int nx = x + dx[j];
 				
@@ -48,8 +49,9 @@ ll solution() {
 					q.push(nx);
 					
 					sum += dist; // 거리합 갱신 
-					K--; // 집의 위치 배정 
+					K--; // 집 설치 
 					
+                    // 집을 모두 설치한 경우 정답 리턴 
 					if(K == 0) return sum; 
 				}
 			}
