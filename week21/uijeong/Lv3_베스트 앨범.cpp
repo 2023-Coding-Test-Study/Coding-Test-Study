@@ -6,12 +6,12 @@
 
 using namespace std;
 
-bool comp1(pair<string, int> &a, pair<string, int> &b){ // 장르별 정렬 
+bool comp1(pair<string, int> &a, pair<string, int> &b){
     return a.second >= b.second;
 }
 
 
-bool comp2(pair<int, int> &a, pair<int, int> &b){ // 각 장르의 노래별 정렬
+bool comp2(pair<int, int> &a, pair<int, int> &b){
     if(a.first == b.first) return a.second < b.second;
     return a.first > b.first;
 }
@@ -41,13 +41,10 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
     vector<pair<string, int>> s(play_time.begin(), play_time.end()); // map을 vector로 변환 
     sort(s.begin(), s.end(), comp1); // value 기준으로 정렬
     
-    for(auto &a : album){ // 각 장르별 노래 횟수 정렬
-        sort(a.second.begin(), a.second.end(), comp2); 
-    }
-    
     // 값 저장 
     for(int i=0; i < s.size(); i++){
         string g = s[i].first;
+        sort(album[g].begin(), album[g].end(), comp2); // 각 장르별 노래 횟수 정렬
         if(album[g].size() == 1){
             answer.push_back(album[g][0].second);
         }
