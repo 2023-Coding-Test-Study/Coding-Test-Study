@@ -39,7 +39,7 @@ bool bfs(vector<string> arr, int startX, int startY){
         // 더 이상 탐색할 필요 없이 다음 위치로 넘어감. 
         if(now.dist > 2) continue; 
         
-        // 탐색의 시작점이 아닌, 다른 P를 만난 경우 
+        // 탐색 시작점이 아닌 곳에서 또 다른 P를 만나면 
         if(now.dist != 0 && arr[now.x][now.y] == 'P') return false;
         
         for(int i = 0; i < 4; i++){
@@ -55,7 +55,7 @@ bool bfs(vector<string> arr, int startX, int startY){
         }
     }
     
-    // 맨해튼 거리가 2보다 큰 위치에 P가 없다. 
+    // 맨해튼 거리가 2보다 큰 위치에 P가 없는 경우 
     return true; 
 }
 
