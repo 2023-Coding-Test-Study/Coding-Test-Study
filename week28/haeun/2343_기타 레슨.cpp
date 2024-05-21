@@ -15,24 +15,24 @@ typedef long long ll;
 typedef pair<int, int> pii;
 
 int N, M; 
-queue<int> lessons;
+vector<int> lessons;
 
-// 블루레이 크기가 x일 때 
-// N개의 강의를 담기 위해 필요한 개수는 M개 이하인가?
 bool decision(int x){
-	queue<int> q(lessons); // 원소 전체 복사 
-	
 	int sum = 0, cnt = 0;
-	while(!q.empty()){
-		if(sum + q.front() <= x){ 
-			sum += q.front(); 
-			q.pop(); 
-			if(q.empty()) cnt++; 
-		}else{
-			cnt++; 
+	
+	for(auto time: lessons){
+    	// x를 넘는 지점에서 cnt 갱신 
+		if(sum + time > x){ 
+			cnt++;
 			sum = 0; 
 		}
+        
+        // if문과 상관없이 매번 실행 
+		sum += time; 
 	}
+	
+    // for문에서 처리되지 않은 강의들에 대해 cnt 갱신
+	if(sum != 0) cnt++;  
 	
 	return cnt <= M;
 }
@@ -50,7 +50,7 @@ int main()
 	for(int i = 0; i < N; i++){
 		int x; 
 		cin >> x;
-		lessons.push(x);
+		lessons.push_back(x);
 		
 		sum += x;
 		longestLesson = max(x, longestLesson);
