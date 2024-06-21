@@ -1,0 +1,11 @@
+python:
+- '**/*.py'
+
+cpp:
+- '**/*.cpp'
+
+java:
+- '**/*.java'
+
+kotlin:
+- '**/*.kt'
