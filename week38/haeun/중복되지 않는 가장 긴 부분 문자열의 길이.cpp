@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string> 
+#include <cstring>
+#include <sstream>
+#include <algorithm>
+#include <vector>
+#include <cmath>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <map>
+#include <set>
+#include <unordered_set>
+#include <unordered_map>
+using namespace std;
+typedef long long ll;
+typedef pair<int, int> pii;
+
+// 문자가 중복되지 않는, 가장 긴 부분 문자열의 길이 구하기 
+// 최대 길이 5만, N^2 -> 25억
+class Solution {
+public:
+    int lengthOfLongestSubstring(string input) {
+        int maxLength = 0;
+        int left = 0;
+        set<char> s;
+
+        for(int right = 0; right < input.size(); right++){
+            // 중복되는 문자가 있으면 
+            while(s.find(input[right]) != s.end()){
+                // 왼쪽부터 슬라이딩 윈도우  
+                s.erase(input[left]);
+                left++;
+            }
+
+            // 중복되지 않으면 오른쪽에 추가 
+            s.insert(input[right]);
+
+            // 최대 길이 갱신 
+            maxLength = max(maxLength, right - left + 1);
+        }
+
+        return maxLength;
+    }
+};
